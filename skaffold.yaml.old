@@ -1,0 +1,40 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: sample-app
+build:
+  artifacts:
+    - image: rishabht123/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+    - image: rishabht123/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+    - image: rishabht123/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+    - image: rishabht123/moderations
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+    - image: rishabht123/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+    - image: rishabht123/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - infra/k8s/client-depl.yaml
+    - infra/k8s/comments-depl.yaml
+    - infra/k8s/event-bus-depl.yaml
+    - infra/k8s/ingress-srv.yaml
+    - infra/k8s/moderations-depl.yaml
+    - infra/k8s/posts-depl.yaml
+    - infra/k8s/posts-srv.yaml
+    - infra/k8s/query-depl.yaml
